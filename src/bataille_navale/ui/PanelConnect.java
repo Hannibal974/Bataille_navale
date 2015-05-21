@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import bataille_navale.Client;
 import bataille_navale.Player;
 
+@SuppressWarnings("serial")
 public class PanelConnect extends JPanel implements ActionListener
 {
 	private JLabel labelname;
@@ -39,8 +40,11 @@ public class PanelConnect extends JPanel implements ActionListener
 		// TODO Auto-generated method stub
 		if(e.getSource() == buttonconnect)
 		{
+			System.out.println("Creation du Player");
 			Player play = new Player(textname.getText());
+			System.out.println("Player prêt à jouer");
 			String validation = client.AddPlayerToServeur(play);
+			System.out.println("Lancement du client!");
 		}
 	}
 }

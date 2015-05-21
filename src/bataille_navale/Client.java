@@ -26,18 +26,20 @@ public class Client
 		} 
 		catch (Exception e) 
 		{
-			System.err.println("Client : "+e.getMessage());;
+			System.err.println("Client : "+e.getMessage());
 		}
 	}
 	
 	public String AddPlayerToServeur (Player play)
 	{
+		System.out.println("Préparation de la connexion");
 		try
 		{
 			JSONObject demande = new JSONObject();
 			demande.put("commande", "add");
 			demande.put("param", play.getUsername());
 			out.println(demande);
+			System.out.println("Demande envoyée");
 			if(in.readLine().equals("ajoute"))
 				return "ok";
 			else return "rate";
@@ -61,6 +63,7 @@ public class Client
 	{
 		Client client  = new Client ();
 		MaFrame frame = new MaFrame(client);
+		System.out.println("Frame créée");
 		frame.setVisible(true);
 	}
 }

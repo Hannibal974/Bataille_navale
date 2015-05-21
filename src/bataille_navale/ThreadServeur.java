@@ -33,9 +33,12 @@ public class ThreadServeur implements Runnable
 				
 				if(demande.get("commande").equals("add"))
 				{
+					System.out.println("Demande du client reçu!");
 					Player play = new Player(demande.get("param").toString());
+					System.out.println("Client créer dans le serveur - Ajout du Player");
 					srv.AddPlayer(play);
 					out.println("ajoute");
+					System.out.println("Player enregistré");
 				}
 			}
 		}

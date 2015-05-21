@@ -19,12 +19,13 @@ public class Serveur
 			matches = new ArrayList<Match>();
 			// Ã©coute du serveur
 			ServerSocket ss=new ServerSocket(1234);
-			System.out.println("Serveur en Ã©coute...");
+			System.out.println("Serveur en ecoute...");
 			while(true) {
 				// un client se connecte
 				Socket socket=ss.accept();
-				System.out.println("Un client est connectÃ© !");
+				System.out.println("Un client est connecte!");
 				new Thread(new ThreadServeur(socket, this)).start();
+				System.out.println("Thread ouvert");
 			}
 
 		} catch (Exception e) {
@@ -37,12 +38,15 @@ public class Serveur
 	
 	public void AddPlayer (Player play)
 	{
+		System.out.println("Joueur in");
 		listePlayer.add(play);
+		System.out.println("joueur ajouté à la liste");
 	}
 	
 	public void AddMatches (Match match)
 	{
 		matches.add(match);
+		System.out.println("match créé");
 	}
 
 }

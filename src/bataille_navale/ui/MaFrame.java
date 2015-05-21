@@ -1,8 +1,8 @@
 package bataille_navale.ui;
 
 import java.awt.Frame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import bataille_navale.Client;
 
+@SuppressWarnings("serial")
 public class MaFrame extends Frame 
 {
 	private PanelConnect panelconnect;
