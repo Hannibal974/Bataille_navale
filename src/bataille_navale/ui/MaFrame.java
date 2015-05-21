@@ -1,16 +1,10 @@
 package bataille_navale.ui;
 
-import java.awt.Frame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
+import javax.swing.JFrame;
 import bataille_navale.Client;
 
-public class MaFrame extends Frame 
+public class MaFrame extends JFrame 
 {
 	private PanelConnect panelconnect;
 	//private PanelLobby lobbypanel;
@@ -21,10 +15,7 @@ public class MaFrame extends Frame
 		setTitle("Bataille_navale");
 		setSize(900, 600);
 		client = cli;
-		panelconnect = new PanelConnect(client);
+		panelconnect = new PanelConnect(client, this);
 		add(panelconnect);
-		/*lobbypanel = new PanelLobby (client);
-		lobbypanel.setVisible(false);
-		add(lobbypanel);*/
 	}
 }
