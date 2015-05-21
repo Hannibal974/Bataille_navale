@@ -13,6 +13,7 @@ import bataille_navale.Client;
 public class MaFrame extends Frame 
 {
 	private PanelConnect panelconnect;
+	//private PanelLobby lobbypanel;
 	private Client client;
 	
 	public MaFrame (Client cli)
@@ -22,5 +23,8 @@ public class MaFrame extends Frame
 		client = cli;
 		panelconnect = new PanelConnect(client);
 		add(panelconnect);
+		/*lobbypanel = new PanelLobby (client);
+		lobbypanel.setVisible(false);
+		add(lobbypanel);*/
 	}
 }

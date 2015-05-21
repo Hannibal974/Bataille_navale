@@ -38,6 +38,10 @@ public class Serveur
 	public void AddPlayer (Player play)
 	{
 		listePlayer.add(play);
+		for(Player p : listePlayer)
+		{
+			System.out.println(p.getUsername());
+		}
 	}
 	
 	public void AddMatches (Match match)
