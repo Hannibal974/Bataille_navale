@@ -18,6 +18,7 @@ public class Serveur
 			listePlayer = new ArrayList<Player>();
 			matches = new ArrayList<Match>();
 			// écoute du serveur
+			@SuppressWarnings("resource")
 			ServerSocket ss=new ServerSocket(1234);
 			System.out.println("Serveur en ecoute...");
 			while(true) {
