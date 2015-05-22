@@ -2,10 +2,12 @@ package bataille_navale;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import bataille_navale.Player;
 
 import javax.swing.JComboBox;
 
+@SuppressWarnings("serial")
 public class JoueurIn extends ArrayList<Player> {
 	
 	public JoueurIn(){
