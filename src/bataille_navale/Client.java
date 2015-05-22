@@ -20,6 +20,7 @@ public class Client
 	{
 		try 
 		{
+			@SuppressWarnings("resource")
 			Socket socket=new Socket("localhost", 1234);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

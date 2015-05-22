@@ -18,12 +18,13 @@ public class Serveur
 			listePlayer = new ArrayList<Player>();
 			matches = new ArrayList<Match>();
 			// écoute du serveur
+			@SuppressWarnings("resource")
 			ServerSocket ss=new ServerSocket(1234);
-			System.out.println("Serveur en écoute...");
+			System.out.println("Serveur en ecoute...");
 			while(true) {
 				// un client se connecte
 				Socket socket=ss.accept();
-				System.out.println("Un client est connecté !");
+				System.out.println("Un client est connecte !");
 				new Thread(new ThreadServeur(socket, this)).start();
 			}
 
@@ -38,10 +39,6 @@ public class Serveur
 	public void AddPlayer (Player play)
 	{
 		listePlayer.add(play);
-		for(Player p : listePlayer)
-		{
-			System.out.println(p.getUsername());
-		}
 	}
 	
 	public void AddMatches (Match match)

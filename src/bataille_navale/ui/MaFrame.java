@@ -1,13 +1,16 @@
 package bataille_navale.ui;
 
+import java.awt.Frame;
 
-import javax.swing.JFrame;
 import bataille_navale.Client;
 
-public class MaFrame extends JFrame 
+public class MaFrame extends Frame 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private PanelConnect panelconnect;
-	//private PanelLobby lobbypanel;
 	private Client client;
 	
 	public MaFrame (Client cli)
@@ -15,7 +18,7 @@ public class MaFrame extends JFrame
 		setTitle("Bataille_navale");
 		setSize(900, 600);
 		client = cli;
-		panelconnect = new PanelConnect(client, this);
+		panelconnect = new PanelConnect(client);
 		add(panelconnect);
 	}
 }
