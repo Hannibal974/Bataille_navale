@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+//import java.util.ArrayList;
 
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import random.core.Match;
 
@@ -46,6 +48,14 @@ public class ThreadServeur implements Runnable
 				}
 				else if(demande.get("commande").equals("join"))
 				{
+					JSONArray ArrayPlayers = new JSONArray();
+					JSONArray ArrayMatches = new JSONArray();
+					
+					ArrayPlayers.put(srv.getListePlayer());
+					ArrayMatches.put(srv.getMatches());
+					
+					out.println(ArrayPlayers);
+					out.println(ArrayMatches);
 					
 				}
 			}
