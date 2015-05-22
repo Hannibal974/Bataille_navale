@@ -44,15 +44,11 @@ public class PanelConnect extends JPanel implements ActionListener
 		{
 			Player play = new Player(textname.getText());
 			String validation = client.AddPlayerToServeur(play);
-			System.out.println("1");
+			
 			frame.getContentPane().setVisible(false);
-			System.out.println("2");
 			frame.getContentPane().remove(this);
-			System.out.println("3");
-			frame.getContentPane().add(new PanelLobby(client));
-			System.out.println("4");
+			frame.getContentPane().add(new PanelLobby(client, play));
 			frame.getContentPane().setVisible(true);
-			System.out.println("5");
 		}
 	}
 }

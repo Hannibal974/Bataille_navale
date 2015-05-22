@@ -7,6 +7,8 @@ import java.net.Socket;
 
 import org.json.JSONObject;
 
+import random.core.Match;
+
 public class ThreadServeur implements Runnable
 {
 	private Socket socket;
@@ -36,6 +38,15 @@ public class ThreadServeur implements Runnable
 					Player play = new Player(demande.get("param").toString());
 					srv.AddPlayer(play);
 					out.println("ajoute");
+				}
+				else if(demande.get("commande").equals("create"))
+				{
+					srv.AddMatches(new Match(this, new Player(demande.get("username").toString()), null, null));
+					out.println("match cree");
+				}
+				else if(demande.get("commande").equals("join"))
+				{
+					
 				}
 			}
 		}

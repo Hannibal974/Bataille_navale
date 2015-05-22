@@ -20,13 +20,13 @@ public class Client
 	{
 		try 
 		{
-			Socket socket=new Socket("localhost", 1234);
+			Socket socket = new Socket("localhost", 1234);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		} 
 		catch (Exception e) 
 		{
-			System.err.println("Client : "+e.getMessage());;
+			System.err.println("Client : "+e.getMessage());
 		}
 	}
 	
@@ -49,13 +49,42 @@ public class Client
 		return "other";
 	}
 	
-	public void close() throws IOException {
-        if ( out!=null ) {
-             out.close();
-        }
-        if ( in!=null ) {
-             in.close();}
-   }
+	public String CreateMatch (Player play)
+	{
+		try
+		{
+			JSONObject demande = new JSONObject();
+			demande.put("commande", "create");
+			demande.put("username", play.getUsername());
+			out.println(demande);
+			
+			if(in.readLine().equals("match cree"))
+				return "ok";
+			else return "rate";
+		}
+		catch(Exception e)
+		{
+			System.out.println("error create Match" + e.getMessage());
+		}
+		return "other";
+	}
+	
+	public String JoinMatch (int index)
+	{
+		try
+		{
+			JSONObject demande = new JSONObject();
+			demande.put("commande", "join");
+			demande.put("index", index);
+			out.println(demande);
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return "other";
+	}
 	
 	public static void main(String[] args) throws JSONException, IOException 
 	{

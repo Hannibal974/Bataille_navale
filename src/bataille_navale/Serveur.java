@@ -4,9 +4,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import core.Match;
+import random.core.Match;
 
-public class Serveur 
+public class Serveur
 {
 	private ArrayList<Player> listePlayer;
 	private ArrayList<Match> matches;
@@ -38,15 +38,29 @@ public class Serveur
 	public void AddPlayer (Player play)
 	{
 		listePlayer.add(play);
-		for(Player p : listePlayer)
-		{
-			System.out.println(p.getUsername());
-		}
 	}
 	
 	public void AddMatches (Match match)
 	{
 		matches.add(match);
+		for(Match m : matches)
+		{
+			System.out.println(m.getTs1());
+			System.out.println(m.getP1());
+			System.out.println(m.getTs2());
+			System.out.println(m.getP2());
+		}
 	}
-
+	public ArrayList<Player> getListePlayer() {
+		return listePlayer;
+	}
+	public void setListePlayer(ArrayList<Player> listePlayer) {
+		this.listePlayer = listePlayer;
+	}
+	public ArrayList<Match> getMatches() {
+		return matches;
+	}
+	public void setMatches(ArrayList<Match> matches) {
+		this.matches = matches;
+	}
 }
