@@ -24,7 +24,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	//private JComboBox<Match> combomatches;
 	private JComboBox<String> PlayersIn;
 	
-	public PanelLobby (Client cli, Player play)
+	public PanelLobby (Client cli, Player play, String[] listMatchToJoin)
 	{
 		setLayout(new GridLayout(1,2));
 		//combomatches = new JComboBox<Match>();
@@ -33,7 +33,14 @@ public class PanelLobby extends JPanel implements ActionListener
 		p = play;
 		buttonCreate = new JButton("Create game");
 		buttonCreate.addActionListener(this);
+		
 		//add(combomatches);
+		for(int i = 0; i < listMatchToJoin.length; i++)
+		{
+			//il faut concaténer la ligne i et i+1 pour avoir le thread et le nom du joueur sur la même ligne
+			PlayersIn.addItem("Playeur: "+listMatchToJoin[i]+"| Match: "+listMatchToJoin[i+1]);
+			i=1+2;//Il faut avancer de 2 lignes du coup 
+		}
 		add(PlayersIn);
 		add(buttonCreate);
 		setVisible(true);

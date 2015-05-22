@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+//import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import bataille_navale.ui.MaFrame;
+//import random.core.Match;
 
 public class Client 
 {
@@ -85,6 +88,28 @@ public class Client
 			
 		}
 		return "other";
+	}
+	
+	public String[] GetMatchFromServer () throws NullPointerException
+	{
+		try
+		{
+			JSONObject demande = new JSONObject();
+			demande.put("commande", "getmatches");
+			out.println(demande);
+			JSONArray reponse = new JSONArray(in.readLine());
+			String [] tblmatches = new String[reponse.length()];
+			for(int i = 0; i<reponse.length(); i++)
+			{
+				tblmatches[i] = reponse.getString(i);
+			}
+			return tblmatches;
+		}
+		catch (Exception e)
+		{
+ 
+		}
+		return null;
 	}
 	
 	public static void main(String[] args) throws JSONException, IOException 

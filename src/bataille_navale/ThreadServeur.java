@@ -6,8 +6,10 @@ import java.io.PrintWriter;
 import java.net.Socket;
 //import java.util.ArrayList;
 
-import org.json.JSONObject;
+import java.util.ArrayList;
+
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import random.core.Match;
 
@@ -45,6 +47,21 @@ public class ThreadServeur implements Runnable
 				{
 					srv.AddMatches(new Match(this, new Player(demande.get("username").toString()), null, null));
 					out.println("match cree");
+				}
+				else if(demande.get("commande").equals("getmatches"))
+				{
+					ArrayList<Match> listmatch = srv.getMatches();
+					JSONArray tblMatches = new JSONArray();
+					for(Match m : listmatch)
+					{
+						if(m.getP2() == null)
+						{
+							tblMatches.put(m.getTs1().toString());
+							tblMatches.put(m.getP1().getUsername());
+						}
+						
+					}
+					out.println(tblMatches);
 				}
 				else if(demande.get("commande").equals("join"))
 				{
