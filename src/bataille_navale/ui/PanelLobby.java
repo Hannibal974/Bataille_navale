@@ -14,6 +14,10 @@ import bataille_navale.Player;
 
 public class PanelLobby extends JPanel implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6003067736193144131L;
 	private Client client;
 	private Player p;
 	private JButton buttonCreate;

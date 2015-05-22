@@ -6,6 +6,10 @@ import bataille_navale.Client;
 
 public class MaFrame extends JFrame 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 367283965898819135L;
 	private PanelConnect panelconnect;
 	//private PanelLobby lobbypanel;
 	private Client client;
