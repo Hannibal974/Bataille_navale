@@ -44,8 +44,10 @@ public class PanelConnect extends JPanel implements ActionListener
 		if(e.getSource() == buttonconnect)
 		{
 			Player play = new Player(textname.getText());
-			@SuppressWarnings("unused")
+			//@SuppressWarnings("unused");
+			System.out.println("envoi du client sur le serveur");
 			String validation = client.AddPlayerToServeur(play);
+			System.out.println(validation + ": Add player OK");
 		}
 	}
 }

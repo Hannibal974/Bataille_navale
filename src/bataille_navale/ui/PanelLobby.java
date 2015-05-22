@@ -9,6 +9,11 @@ import bataille_navale.Client;
 
 public class PanelLobby extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private Client client;
 	private JButton buttonConnect;
 	

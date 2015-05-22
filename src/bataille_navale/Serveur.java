@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import core.Match;
+import bataille_navale.Player;
 
 public class Serveur 
 {
@@ -15,9 +16,12 @@ public class Serveur
 	{
 		try 
 		{
+			System.out.println("creation des listes");
 			listePlayer = new ArrayList<Player>();
 			matches = new ArrayList<Match>();
-			// écoute du serveur
+			// ecoute du serveur
+			
+			System.out.println("creation du socket");
 			@SuppressWarnings("resource")
 			ServerSocket ss=new ServerSocket(1234);
 			System.out.println("Serveur en ecoute...");
@@ -26,6 +30,7 @@ public class Serveur
 				Socket socket=ss.accept();
 				System.out.println("Un client est connecte !");
 				new Thread(new ThreadServeur(socket, this)).start();
+				System.out.println("Thread cree...");
 			}
 
 		} catch (Exception e) {
@@ -33,16 +38,19 @@ public class Serveur
 		}
 	}
 	public static void main(String[] args) {
+		System.out.println("creation serveur");
 		new Serveur();
 	}
 	
 	public void AddPlayer (Player play)
 	{
+		System.out.println("Ajout d'un joueur :" + play.getUsername());
 		listePlayer.add(play);
 	}
 	
 	public void AddMatches (Match match)
 	{
+		System.out.println("Enregistrement d'une partie avec " + (match.getP1()).getUsername()+ "et" + (match.getP2()).getUsername());
 		matches.add(match);
 	}
 

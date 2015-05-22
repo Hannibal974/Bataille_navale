@@ -35,10 +35,15 @@ public class Client
 	{
 		try
 		{
+			System.out.println("creation de la demande");
 			JSONObject demande = new JSONObject();
+			System.out.println("ajout de la commande dans la demande");
 			demande.put("commande", "add");
+			System.out.println("ajout du nom de l'utilisateur");
 			demande.put("param", play.getUsername());
+			System.out.println("envoie de la demande");
 			out.println(demande);
+			
 			if(in.readLine().equals("ajoute"))
 				return "ok";
 			else return "rate";
@@ -60,8 +65,11 @@ public class Client
 	
 	public static void main(String[] args) throws JSONException, IOException 
 	{
+		System.out.println("creation du client");
 		Client client  = new Client ();
+		System.out.println("creation de la frame");
 		MaFrame frame = new MaFrame(client);
+		System.out.println("Affichage à l'utilisateur");
 		frame.setVisible(true);
 	}
 }
