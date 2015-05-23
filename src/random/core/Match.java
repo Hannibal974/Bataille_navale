@@ -1,5 +1,7 @@
 package random.core;
 
+import java.util.Random;
+
 import bataille_navale.Player;
 import bataille_navale.ThreadServeur;
 
@@ -9,6 +11,7 @@ public class Match
 	private Player p1;
 	private ThreadServeur ts2;
 	private Player p2;
+	private int numbertofound;
 	
 	public Match (ThreadServeur t1, Player play1, ThreadServeur t2, Player play2)
 	{
@@ -16,6 +19,8 @@ public class Match
 		p1 = play1;
 		ts2 = t2;
 		p2 = play2;
+		Random rand = new Random();
+		numbertofound = rand.nextInt(1000) + 1;
 	}
 
 	public ThreadServeur getTs1() {
