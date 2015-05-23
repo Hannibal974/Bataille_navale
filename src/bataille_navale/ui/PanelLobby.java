@@ -39,7 +39,7 @@ public class PanelLobby extends JPanel implements ActionListener
 		{
 			//il faut concaténer la ligne i et i+1 pour avoir le thread et le nom du joueur sur la même ligne
 			PlayersIn.addItem("Playeur: "+listMatchToJoin[i]+"| Match: "+listMatchToJoin[i+1]);
-			i=1+2;//Il faut avancer de 2 lignes du coup 
+			i++;//Il faut avancer de 2 lignes du coup 
 		}
 		add(PlayersIn);
 		add(buttonCreate);
