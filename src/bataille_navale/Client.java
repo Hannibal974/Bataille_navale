@@ -73,15 +73,18 @@ public class Client
 		return "other";
 	}
 	
-	public String JoinMatch (int index)
+	public String JoinMatch (int index, Player play)
 	{
 		try
 		{
 			JSONObject demande = new JSONObject();
 			demande.put("commande", "join");
 			demande.put("index", index);
+			demande.put("username", play.getUsername());
 			out.println(demande);
-			
+			if(in.readLine().equals("joinDone"))
+				return "JoinMatch";
+			else return "JoinFailed";
 		}
 		catch(Exception e)
 		{

@@ -64,4 +64,9 @@ public class Serveur
 	public void setMatches(ArrayList<Match> matches) {
 		this.matches = matches;
 	}
+	public void SetSecondPlayer (int i, ThreadServeur ts, Player p)
+	{
+		matches.get(i).setTs2(ts);
+		matches.get(i).setP2(p);
+	}
 }

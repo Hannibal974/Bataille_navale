@@ -65,15 +65,8 @@ public class ThreadServeur implements Runnable
 				}
 				else if(demande.get("commande").equals("join"))
 				{
-					JSONArray ArrayPlayers = new JSONArray();
-					JSONArray ArrayMatches = new JSONArray();
-					
-					ArrayPlayers.put(srv.getListePlayer());
-					ArrayMatches.put(srv.getMatches());
-					
-					out.println(ArrayPlayers);
-					out.println(ArrayMatches);
-					
+					srv.SetSecondPlayer(Integer.parseInt(demande.get("index").toString()), this, new Player(demande.get("username").toString()));
+					out.println("joinDone");
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 package bataille_navale.ui;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 
 //import random.core.Match;
 import bataille_navale.Client;
@@ -20,13 +23,13 @@ public class PanelLobby extends JPanel implements ActionListener
 	private static final long serialVersionUID = -6003067736193144131L;
 	private Client client;
 	private Player p;
-	private JButton buttonCreate;
+	private JButton buttonCreate, buttonjoin;
 	//private JComboBox<Match> combomatches;
 	private JComboBox<String> PlayersIn;
 	
 	public PanelLobby (Client cli, Player play, String[] listMatchToJoin)
 	{
-		setLayout(new GridLayout(1,2));
+		setLayout(new GridLayout(1,3));
 		//combomatches = new JComboBox<Match>();
 		PlayersIn = new JComboBox<String>();
 		client = cli;
@@ -41,8 +44,11 @@ public class PanelLobby extends JPanel implements ActionListener
 			PlayersIn.addItem("Playeur: "+listMatchToJoin[i]+"| Match: "+listMatchToJoin[i+1]);
 			i++;//Il faut avancer de 2 lignes du coup 
 		}
+		buttonjoin = new JButton("Rejoindre");
+		buttonjoin.addActionListener(this);
 		add(PlayersIn);
 		add(buttonCreate);
+		add(buttonjoin, BorderLayout.SOUTH);
 		setVisible(true);
 	}
 
@@ -53,6 +59,11 @@ public class PanelLobby extends JPanel implements ActionListener
 		if(e.getSource() == buttonCreate)
 		{
 			String validation = client.CreateMatch(p);
+			System.out.println(validation);
+		}
+		else if (e.getSource() == buttonjoin)
+		{
+			String validation = client.JoinMatch(PlayersIn.getSelectedIndex(), p);
 			System.out.println(validation);
 		}
 	}
