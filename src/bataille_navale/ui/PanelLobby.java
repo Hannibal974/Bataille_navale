@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 
+
 //import random.core.Match;
 import bataille_navale.Client;
 import bataille_navale.Player;
@@ -26,14 +27,16 @@ public class PanelLobby extends JPanel implements ActionListener
 	private JButton buttonCreate, buttonjoin;
 	//private JComboBox<Match> combomatches;
 	private JComboBox<String> PlayersIn;
+	private MaFrame frame;
 	
-	public PanelLobby (Client cli, Player play, String[] listMatchToJoin)
+	public PanelLobby (Client cli, Player play, String[] listMatchToJoin, MaFrame framish)
 	{
 		setLayout(new GridLayout(1,3));
 		//combomatches = new JComboBox<Match>();
 		PlayersIn = new JComboBox<String>();
 		client = cli;
 		p = play;
+		frame = framish;
 		buttonCreate = new JButton("Create game");
 		buttonCreate.addActionListener(this);
 		
@@ -66,6 +69,14 @@ public class PanelLobby extends JPanel implements ActionListener
 			String validation = client.JoinMatch(PlayersIn.getSelectedIndex(), p);
 			System.out.println(validation);
 		}
+		frame.getContentPane().setVisible(false);
+		frame.getContentPane().remove(this);
+		///////////////////////////////////////////////////////////
+		// Je ne sais pas quoi passer en paramètres du PanelGame
+		frame.getContentPane().add(new PanelGame(client));
+		//
+		///////////////////////////////////////////////////////////
+		frame.getContentPane().setVisible(true);
 	}
 	
 	

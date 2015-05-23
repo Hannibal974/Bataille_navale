@@ -55,7 +55,7 @@ public class PanelConnect extends JPanel implements ActionListener
 			}
 			frame.getContentPane().setVisible(false);
 			frame.getContentPane().remove(this);
-			frame.getContentPane().add(new PanelLobby(client, play, listMatches));
+			frame.getContentPane().add(new PanelLobby(client, play, listMatches, frame));
 			frame.getContentPane().setVisible(true);
 		}
 	}
