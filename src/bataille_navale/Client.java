@@ -7,10 +7,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 //import java.util.ArrayList;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import random.core.Match;
 import bataille_navale.ui.MaFrame;
 //import random.core.Match;
 
@@ -53,7 +55,7 @@ public class Client
 		return "other";
 	}
 	
-	public String CreateMatch (Player play)
+	public Match CreateMatch (Player play)
 	{
 		try
 		{
@@ -61,16 +63,16 @@ public class Client
 			demande.put("commande", "create");
 			demande.put("username", play.getUsername());
 			out.println(demande);
-			
-			if(in.readLine().equals("match cree"))
-				return "ok";
-			else return "rate";
+			JSONArray reponse = new JSONArray(in.readLine());
+			if(reponse.get(0).equals("match cree"))
+				return (Match) reponse.get(1);
+			else return null;
 		}
 		catch(Exception e)
 		{
 			System.out.println("error create Match" + e.getMessage());
 		}
-		return "other";
+		return null;
 	}
 	
 	public String JoinMatch (int index, Player play)

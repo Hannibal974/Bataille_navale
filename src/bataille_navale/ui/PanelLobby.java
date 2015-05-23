@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+
+import random.core.Match;
 //import random.core.Match;
 import bataille_navale.Client;
 import bataille_navale.Player;
@@ -132,8 +134,8 @@ public class PanelLobby extends JPanel implements ActionListener
 		// TODO Auto-generated method stub
 		if(e.getSource() == b_create)
 		{
-			String validation = client.CreateMatch(p);
-			System.out.println(validation);
+			Match validation = client.CreateMatch(p);
+			System.out.println(validation.getTs1().toString());
 		}
 		else if (e.getSource() == b_connect)
 		{

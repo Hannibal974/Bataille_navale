@@ -45,8 +45,12 @@ public class ThreadServeur implements Runnable
 				}
 				else if(demande.get("commande").equals("create"))
 				{
-					srv.AddMatches(new Match(this, new Player(demande.get("username").toString()), null, null));
-					out.println("match cree");
+					Match m = new Match(this, new Player(demande.get("username").toString()), null, null);
+					srv.AddMatches(m);
+					JSONArray reponse = new JSONArray();
+					reponse.put("match cree");
+					reponse.put(m);
+					out.println(reponse);
 				}
 				else if(demande.get("commande").equals("getmatches"))
 				{
