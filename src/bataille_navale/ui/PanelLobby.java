@@ -66,7 +66,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	        l_EnterName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 	        l_EnterName.setText("Selectionner votre adversaire");
 
-	        b_connect.setText("Creer une partie");
+	        b_connect.setText("Rejoindre");
 
 	        PlayersIn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -95,7 +95,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	                                .addContainerGap()
 	                                .addComponent( PlayersIn, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                                .addComponent(b_create, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                                .addComponent(b_connect, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                            .addGroup(layout.createSequentialGroup()
 	                                .addContainerGap()
 	                                .addComponent(l_createParty1)))
@@ -103,7 +103,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	                    .addGroup(layout.createSequentialGroup()
 	                        .addContainerGap()
 	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                            .addComponent(b_connect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	                            .addComponent(b_create, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 	                            .addComponent(b_deconnect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 	                .addContainerGap())
 	        );
@@ -117,11 +117,11 @@ public class PanelLobby extends JPanel implements ActionListener
 	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 	                    .addComponent( PlayersIn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(b_create, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(b_connect, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                .addGap(33, 33, 33)
 	                .addComponent(l_createParty1)
 	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-	                .addComponent(b_connect, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                .addComponent(b_create, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
 	                .addComponent(b_deconnect)
 	                .addContainerGap())
@@ -143,11 +143,12 @@ public class PanelLobby extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == b_connect)
 		{
-			System.out.println("player asked to join a game");
-			String validation = client.JoinMatch(PlayersIn.getSelectedIndex(), p);
-			System.out.println(validation);
-			lancheGame();
-	
+			if (PlayersIn.getSelectedItem() != null ||  PlayersIn.getSelectedItem() != "" ){
+				System.out.println("player asked to join a game");
+				String validation = client.JoinMatch(PlayersIn.getSelectedIndex(), p);
+				System.out.println(validation);
+				lancheGame();	
+			}
 		}
 		
 		if(e.getSource() == b_deconnect)
