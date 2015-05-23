@@ -20,7 +20,7 @@ public class Match
 		ts2 = t2;
 		p2 = play2;
 		Random rand = new Random();
-		numbertofound = rand.nextInt(1000) + 1;
+		setNumbertofound(rand.nextInt(1000) + 1);
 	}
 
 	public ThreadServeur getTs1() {
@@ -53,6 +53,14 @@ public class Match
 
 	public void setP2(Player p2) {
 		this.p2 = p2;
+	}
+
+	public int getNumbertofound() {
+		return numbertofound;
+	}
+
+	public void setNumbertofound(int number) {
+		this.numbertofound = number;
 	}
 	
 }
