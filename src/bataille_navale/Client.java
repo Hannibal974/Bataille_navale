@@ -117,6 +117,21 @@ public class Client
 		return null;
 	}
 	
+	public void Disconnect (Player play)
+	{
+		try
+		{
+			JSONObject demande = new JSONObject();
+			demande.put("commande", "destroy");
+			//demande.put("Player", play);
+			out.println(demande);
+		}
+		catch(Exception e)
+		{
+			System.out.println("error create Match" + e.getMessage());
+		}
+	}
+	
 	public static void main(String[] args) throws JSONException, IOException 
 	{
 		Client client  = new Client ();

@@ -45,6 +45,7 @@ public class ThreadServeur implements Runnable
 				}
 				else if(demande.get("commande").equals("create"))
 				{
+					System.out.println("Create request");
 					Match m = new Match(this, new Player(demande.get("username").toString()), null, null);
 					srv.AddMatches(m);
 					JSONArray reponse = new JSONArray();
@@ -54,6 +55,7 @@ public class ThreadServeur implements Runnable
 				}
 				else if(demande.get("commande").equals("getmatches"))
 				{
+					System.out.println("Get matches asked");
 					ArrayList<Match> listmatch = srv.getMatches();
 					JSONArray tblMatches = new JSONArray();
 					for(Match m : listmatch)
@@ -66,11 +68,22 @@ public class ThreadServeur implements Runnable
 						
 					}
 					out.println(tblMatches);
+					System.out.println("Matches Retunrs");
 				}
 				else if(demande.get("commande").equals("join"))
 				{
+					System.out.println("2nd player request");
 					srv.SetSecondPlayer(Integer.parseInt(demande.get("index").toString()), this, new Player(demande.get("username").toString()));
 					out.println("joinDone");
+				}
+				else if(demande.get("commande").equals("destroy"))
+				{
+					//Ajouter ici la mise à jour des listes du serveur (retirer le client)
+					//Player play = (Player) demande.get("Player");
+					//srv.getListePlayer().remove(play);
+					//srv.getMatches().contains(play);
+					socket.close();
+					System.out.println("player desconnected");
 				}
 			}
 		}

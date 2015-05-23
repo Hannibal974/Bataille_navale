@@ -10,8 +10,9 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 
+
+
 import random.core.Match;
-//import random.core.Match;
 import bataille_navale.Client;
 import bataille_navale.Player;
 
@@ -134,21 +135,34 @@ public class PanelLobby extends JPanel implements ActionListener
 		// TODO Auto-generated method stub
 		if(e.getSource() == b_create)
 		{
+			System.out.println("player asked to create game");
 			Match validation = client.CreateMatch(p);
 			System.out.println(validation.getTs1().toString());
+			// Attente que match reçoit sont 2nd joueur pour lancer GamePanel.
+			lancheGame();
 		}
 		else if (e.getSource() == b_connect)
 		{
+			System.out.println("player asked to join a game");
 			String validation = client.JoinMatch(PlayersIn.getSelectedIndex(), p);
 			System.out.println(validation);
+			lancheGame();
+	
 		}
 		
+		if(e.getSource() == b_deconnect)
+		{
+			//Deconnection du client			
+		}
+	}
+	
+	public void lancheGame(){
+		System.out.println("Game is started");
+		//Affiche le panel du joueur
 		frame.getContentPane().setVisible(false);
 		frame.getContentPane().remove(this);
 		//Lancement du panel
 		frame.getContentPane().add(new PanelGame(client));
 		frame.getContentPane().setVisible(true);
 	}
-	
-	
 }

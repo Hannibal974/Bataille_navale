@@ -24,7 +24,7 @@ public class JoueurIn extends ArrayList<Player> {
 		// TODO Auto-generated constructor stub
 	}
 	
-	//Méthodes pour transformer la ArrayListPlayer en 
+	//Méthodes pour transformer la ArrayListPlayer en JComboBox
 	public JComboBox<String> PlayeurToCombo( ArrayList<Player> AP){
 		JComboBox<String> PlayersIn = new JComboBox<String>();
 		
