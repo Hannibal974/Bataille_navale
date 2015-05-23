@@ -46,36 +46,31 @@ public class ThreadServeur implements Runnable
 				else if(demande.get("commande").equals("create"))
 				{
 					System.out.println("Create request");
-					Match m = new Match(this, new Player(demande.get("username").toString()), null, null);
-					srv.AddMatches(m);
+					int port = srv.getPort();
+					srv.AddServeur(port);
 					JSONArray reponse = new JSONArray();
-					reponse.put("match cree");
-					reponse.put(m);
+					reponse.put("serveur cree");
+					reponse.put(port);
 					out.println(reponse);
 				}
-				else if(demande.get("commande").equals("getmatches"))
+				else if(demande.get("commande").equals("getports"))
 				{
-					System.out.println("Get matches asked");
-					ArrayList<Match> listmatch = srv.getMatches();
-					JSONArray tblMatches = new JSONArray();
-					for(Match m : listmatch)
+					System.out.println("Get ports asked");
+					Integer[] listport = srv.getNumPorts();
+					JSONArray tblports = new JSONArray();
+					for(Integer port : listport)
 					{
-						if(m.getP2() == null)
-						{
-							tblMatches.put(m.getTs1().toString());
-							tblMatches.put(m.getP1().getUsername());
-						}
-						
+							tblports.put(port);
 					}
-					out.println(tblMatches);
+					out.println(tblports);
 					System.out.println("Matches Retunrs");
 				}
-				else if(demande.get("commande").equals("join"))
+				/*else if(demande.get("commande").equals("join"))
 				{
 					System.out.println("2nd player request");
 					srv.SetSecondPlayer(Integer.parseInt(demande.get("index").toString()), this, new Player(demande.get("username").toString()));
 					out.println("joinDone");
-				}
+				}*/
 				else if(demande.get("commande").equals("destroy"))
 				{
 					//Ajouter ici la mise à jour des listes du serveur (retirer le client)

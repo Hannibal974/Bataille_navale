@@ -9,14 +9,16 @@ import random.core.Match;
 public class Serveur
 {
 	private ArrayList<Player> listePlayer;
-	private ArrayList<Match> matches;
+	private Integer[] numPorts;
+	private Integer port;
 	
 	public Serveur() 
 	{
 		try 
 		{
 			listePlayer = new ArrayList<Player>();
-			matches = new ArrayList<Match>();
+			numPorts = new Integer[255];
+			port = 1;
 			// écoute du serveur
 			@SuppressWarnings("resource")
 			ServerSocket ss=new ServerSocket(1234);
@@ -41,16 +43,10 @@ public class Serveur
 		listePlayer.add(play);
 	}
 	
-	public void AddMatches (Match match)
+	public void AddServeur (Integer p)
 	{
-		matches.add(match);
-		for(Match m : matches)
-		{
-			System.out.println(m.getTs1());
-			System.out.println(m.getP1());
-			System.out.println(m.getTs2());
-			System.out.println(m.getP2());
-		}
+		numPorts[port] = p;
+		port++;
 	}
 	public ArrayList<Player> getListePlayer() {
 		return listePlayer;
@@ -58,15 +54,16 @@ public class Serveur
 	public void setListePlayer(ArrayList<Player> listePlayer) {
 		this.listePlayer = listePlayer;
 	}
-	public ArrayList<Match> getMatches() {
-		return matches;
+	public Integer[] getNumPorts() {
+		return numPorts;
 	}
-	public void setMatches(ArrayList<Match> matches) {
-		this.matches = matches;
+	public void setNumPorts(Integer[] numPorts) {
+		this.numPorts = numPorts;
 	}
-	public void SetSecondPlayer (int i, ThreadServeur ts, Player p)
-	{
-		matches.get(i).setTs2(ts);
-		matches.get(i).setP2(p);
+	public Integer getPort() {
+		return port;
+	}
+	public void setPort(Integer port) {
+		this.port = port;
 	}
 }

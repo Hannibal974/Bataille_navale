@@ -99,17 +99,21 @@ public class PanelConnect extends JPanel implements ActionListener
 			Player play = new Player(tf_Username.getText());
 			@SuppressWarnings("unused")
 			String validation = client.AddPlayerToServeur(play);
-			String[] listMatches = client.GetMatchFromServer();
+			Integer[] listPorts = client.GetPortFromServer();
 			//Vérification de la creation du match.
-			for(int i = 0; i < listMatches.length; i++)
+			if(listPorts != null)
 			{
-				System.out.println(listMatches[i]);
+				for(int i = 0; i < listPorts.length; i++)
+				{
+					System.out.println(listPorts[i]);
+				}
 			}
+			
 			//Changement de panel
 			frame.getContentPane().setVisible(false);
 			frame.getContentPane().remove(this);
 			System.out.println("Go to lobby");
-			frame.getContentPane().add(new PanelLobby(client, play, listMatches, frame));
+			frame.getContentPane().add(new PanelLobby(client, play, listPorts, frame));
 			frame.getContentPane().setVisible(true);
 			
 		}

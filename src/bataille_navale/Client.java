@@ -55,7 +55,7 @@ public class Client
 		return "other";
 	}
 	
-	public Match CreateMatch (Player play)
+	public void CreateServeur (Player play)
 	{
 		try
 		{
@@ -65,14 +65,15 @@ public class Client
 			out.println(demande);
 			JSONArray reponse = new JSONArray(in.readLine());
 			if(reponse.get(0).equals("match cree"))
-				return (Match) reponse.get(1);
-			else return null;
+			{
+				new ServeurGame(reponse.getInt(1));
+				new ClientGame(reponse.getInt(1));
+			}
 		}
 		catch(Exception e)
 		{
 			System.out.println("error create Match" + e.getMessage());
 		}
-		return null;
 	}
 	
 	public String JoinMatch (int index, Player play)
@@ -95,18 +96,18 @@ public class Client
 		return "other";
 	}
 	
-	public String[] GetMatchFromServer () throws NullPointerException
+	public Integer[] GetPortFromServer () throws NullPointerException
 	{
 		try
 		{
 			JSONObject demande = new JSONObject();
-			demande.put("commande", "getmatches");
+			demande.put("commande", "getports");
 			out.println(demande);
 			JSONArray reponse = new JSONArray(in.readLine());
-			String [] tblmatches = new String[reponse.length()];
+			Integer[] tblmatches = new Integer[reponse.length()];
 			for(int i = 0; i<reponse.length(); i++)
 			{
-				tblmatches[i] = reponse.getString(i);
+				tblmatches[i] = reponse.getInt(i);
 			}
 			return tblmatches;
 		}

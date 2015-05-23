@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import bataille_navale.Client;
+import bataille_navale.ClientGame;
 import random.core.Match;
 
 @SuppressWarnings("serial")
@@ -27,12 +28,12 @@ public class PanelGame extends JPanel implements ActionListener
     private javax.swing.JButton b_retourLobby;
     private javax.swing.JTextField tf_nombre;
 	@SuppressWarnings("unused")
-	private Client client;
+	private ClientGame client;
 	private Match match;
 	private int nomberToFound;
     // End of variables declaration//GEN-END:variables
 	
-	public PanelGame(Client cli) 
+	public PanelGame(ClientGame cli) 
 	{
 		client = cli;
 		setLayout(new GridLayout(1,3));

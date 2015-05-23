@@ -32,19 +32,22 @@ public class PanelLobby extends JPanel implements ActionListener
 	private MaFrame frame;
     // End of variables declaration//GEN-END:variables
 	
-	public PanelLobby (Client cli, Player play, String[] listMatchToJoin, MaFrame framish)
+	public PanelLobby (Client cli, Player play, Integer[] listPortsToJoin, MaFrame framish)
 	{
 		client = cli;
 		p = play;
 		frame = framish;
 		initComponents();
-		
-		for(int i = 0; i < listMatchToJoin.length; i++)
+		if(listPortsToJoin != null)
 		{
-			//il faut concaténer la ligne i et i+1 pour avoir le thread et le nom du joueur sur la même ligne
-			PlayersIn.addItem("Playeur: "+listMatchToJoin[i]+"| Match: "+listMatchToJoin[i+1]);
-			i++;//Il faut avancer de 2 lignes du coup 
+			for(int i = 0; i < listPortsToJoin.length; i++)
+			{
+				//il faut concaténer la ligne i et i+1 pour avoir le thread et le nom du joueur sur la même ligne
+				PlayersIn.addItem("Serveur : "+listPortsToJoin[i]);
+				i++;//Il faut avancer de 2 lignes du coup 
+			}
 		}
+		
 		setVisible(true);
 	}
 
@@ -136,8 +139,7 @@ public class PanelLobby extends JPanel implements ActionListener
 		if(e.getSource() == b_create)
 		{
 			System.out.println("player asked to create game");
-			Match validation = client.CreateMatch(p);
-			System.out.println(validation.getTs1().toString());
+			client.CreateServeur(p);
 			// Attente que match reçoit sont 2nd joueur pour lancer GamePanel.
 			lancheGame();
 		}
@@ -153,7 +155,7 @@ public class PanelLobby extends JPanel implements ActionListener
 		
 		if(e.getSource() == b_deconnect)
 		{
-			//Deconnection du client			
+			//Deconnection du client	
 		}
 	}
 	
@@ -163,7 +165,6 @@ public class PanelLobby extends JPanel implements ActionListener
 		frame.getContentPane().setVisible(false);
 		frame.getContentPane().remove(this);
 		//Lancement du panel
-		frame.getContentPane().add(new PanelGame(client));
-		frame.getContentPane().setVisible(true);
+		
 	}
 }
