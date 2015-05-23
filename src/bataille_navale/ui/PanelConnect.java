@@ -43,6 +43,7 @@ public class PanelConnect extends JPanel implements ActionListener
         l_JoinServ = new javax.swing.JLabel();
         l_EnterName = new javax.swing.JLabel();
         b_connect = new javax.swing.JButton();
+        b_connect.addActionListener(this);
         tf_Username = new javax.swing.JTextField();
 
         l_JoinServ.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

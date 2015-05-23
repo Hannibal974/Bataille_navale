@@ -46,6 +46,7 @@ public class PanelGame extends JPanel implements ActionListener
         l_historique = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
         b_send = new javax.swing.JToggleButton();
+        b_send.addActionListener(this);
 
         jToggleButton1.setText("jToggleButton1");
 

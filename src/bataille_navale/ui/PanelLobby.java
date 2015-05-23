@@ -31,11 +31,10 @@ public class PanelLobby extends JPanel implements ActionListener
 	
 	public PanelLobby (Client cli, Player play, String[] listMatchToJoin, MaFrame framish)
 	{
-		PlayersIn = new JComboBox<String>();
 		client = cli;
 		p = play;
 		frame = framish;
-		 initComponents();
+		initComponents();
 		
 		for(int i = 0; i < listMatchToJoin.length; i++)
 		{
@@ -51,27 +50,29 @@ public class PanelLobby extends JPanel implements ActionListener
 	        l_JoinServ = new javax.swing.JLabel();
 	        l_EnterName = new javax.swing.JLabel();
 	        b_connect = new javax.swing.JButton();
+	        b_connect.addActionListener(this);
 	        PlayersIn = new JComboBox<String>();
 	        b_create = new javax.swing.JButton();
+	        b_create.addActionListener(this);
 	        l_createParty1 = new javax.swing.JLabel();
 	        b_deconnect = new javax.swing.JButton();
-
+	        b_deconnect.addActionListener(this);
 	        l_JoinServ.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 	        l_JoinServ.setText("Rejoindre une partie");
 
 	        l_EnterName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 	        l_EnterName.setText("Selectionner votre adversaire");
 
-	        b_connect.setText("Créer une partie");
+	        b_connect.setText("Creer une partie");
 
 	        PlayersIn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-	        b_create.setText("Se connecter");
+	        b_create.setText("Creer une partie");
 
 	        l_createParty1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-	        l_createParty1.setText("Ou créer une partie:");
+	        l_createParty1.setText("Ou creer une partie:");
 
-	        b_deconnect.setText("Se déconnecter");
+	        b_deconnect.setText("Se deconnecter");
 
 	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
 	        this.setLayout(layout);
