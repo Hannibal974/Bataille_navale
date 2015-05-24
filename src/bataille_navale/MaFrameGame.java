@@ -1,16 +1,12 @@
 package bataille_navale;
 
 import java.awt.GridLayout;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import bataille_navale.ui.PanelGame;
 
+@SuppressWarnings("serial")
 public class MaFrameGame extends JFrame
 {
-	private JLabel label;
 	private PanelGame panelgame;
 	private ClientGame client;
 	
@@ -25,6 +21,7 @@ public class MaFrameGame extends JFrame
 		setSize(1500, 2000);
 		getContentPane().add(panelgame);
 		getContentPane().setVisible(true);
+		System.out.println("Affiche frame Game");
 		setVisible(true);
 	}
 }

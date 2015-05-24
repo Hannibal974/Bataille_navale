@@ -4,8 +4,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import random.core.Match;
-
 public class Serveur
 {
 	private ArrayList<Player> listePlayer;

@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 
 
 
+
 //import random.core.Match;
 import bataille_navale.Client;
 import bataille_navale.Player;
-import bataille_navale.ServeurGame;
 import bataille_navale.ClientGame;
-import bataille_navale.ui.DialogueBox;
+//import bataille_navale.ui.DialogueBox;
 
 public class PanelLobby extends JPanel implements ActionListener
 {
@@ -31,6 +31,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	private static final long serialVersionUID = -6003067736193144131L;
 	private Client client;
 	private Player p;
+	@SuppressWarnings("unused")
 	private MaFrame frame;
     // End of variables declaration//GEN-END:variables
 	

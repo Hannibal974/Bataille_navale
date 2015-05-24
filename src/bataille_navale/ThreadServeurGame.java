@@ -10,6 +10,7 @@ import org.json.JSONObject;
 public class ThreadServeurGame implements Runnable
 {
 	private Socket socket;
+	@SuppressWarnings("unused")
 	private ServeurGame srv;
 	
 	public ThreadServeurGame (Socket ss, ServeurGame serv)
@@ -33,9 +34,9 @@ public class ThreadServeurGame implements Runnable
 				
 				if(demande.get("commande").equals("add"))
 				{
+					System.out.println("Réponse à la demande add");
 					out.println("ajoute");
 				}
-				
 			}
 		}
 		catch(Exception e)

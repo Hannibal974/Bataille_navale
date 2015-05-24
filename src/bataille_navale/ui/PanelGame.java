@@ -5,10 +5,7 @@ package bataille_navale.ui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
-
-import bataille_navale.Client;
 import bataille_navale.ClientGame;
 import random.core.Match;
 
@@ -19,12 +16,9 @@ public class PanelGame extends JPanel implements ActionListener
     private javax.swing.JToggleButton b_send;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JDialog jd_gameEnd;
     private javax.swing.JTextArea jta_historique;
     private javax.swing.JLabel l_Trouverlenombre;
     private javax.swing.JLabel l_historique;
-    private javax.swing.JLabel ld_resultgame;
-    private javax.swing.JLabel ld_Texteafficher;
     private javax.swing.JButton b_retourLobby;
     private javax.swing.JTextField tf_nombre;
 	@SuppressWarnings("unused")
@@ -43,9 +37,6 @@ public class PanelGame extends JPanel implements ActionListener
 	
 	private void initComponents() {
         jToggleButton1 = new javax.swing.JToggleButton();
-        jd_gameEnd = new javax.swing.JDialog();
-        ld_resultgame = new javax.swing.JLabel();
-        ld_Texteafficher.setText("Texte à afficher");
         b_retourLobby.setText("Retour Lobby");
         l_Trouverlenombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -57,19 +48,14 @@ public class PanelGame extends JPanel implements ActionListener
 
         jToggleButton1.setText("jToggleButton1");
 
-        ld_resultgame.setText("Résultat du jeu:");
-
         l_Trouverlenombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         l_Trouverlenombre.setText("Trouver le nombre");
-
         jta_historique.setColumns(20);
         jta_historique.setRows(5);
         jScrollPane1.setViewportView(jta_historique);
 
         l_historique.setText("Historique:");
-
         tf_nombre.setText("Nombre ici");
-
         b_send.setText("Envoyer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -109,44 +95,6 @@ public class PanelGame extends JPanel implements ActionListener
         );
     }
 	
-	public void DialogueFin(){
-		
-		/**if (P = P1){
-		 * ld_Texteafficher.setText("Vous avez gagner\n Le nombre était : "+ match.getNumbertofound());
-		 * else if (P = P2){
-		 * ld_Texteafficher.setText("Vous avez Perdu.\n Le nombre était : "+ match.getNumbertofound());
-		}*/
-		
-		//Set le JDialogue.
-        javax.swing.GroupLayout jd_gameEndLayout = new javax.swing.GroupLayout(jd_gameEnd.getContentPane());
-        jd_gameEnd.getContentPane().setLayout(jd_gameEndLayout);
-        jd_gameEndLayout.setHorizontalGroup(
-            jd_gameEndLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_gameEndLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jd_gameEndLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ld_Texteafficher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jd_gameEndLayout.createSequentialGroup()
-                        .addComponent(ld_resultgame)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(b_retourLobby, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jd_gameEndLayout.setVerticalGroup(
-            jd_gameEndLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_gameEndLayout.createSequentialGroup()
-                .addComponent(ld_resultgame)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ld_Texteafficher, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(b_retourLobby)
-                .addContainerGap())
-        );
-        //Afficher le message 
-        //////////////////////Marche pas pour le moment!!!////////////////////
-        jd_gameEnd.setVisible(true);
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -168,11 +116,10 @@ public class PanelGame extends JPanel implements ActionListener
 				}
 				else if (n== nomberToFound){
 					//TODO affiche le résultat au joueur.
-					DialogueFin();
+					jta_historique.append("Jeu terminé.\n");
 				}
 			}
 			//TODO Affiche la fin du jeu si l'un des deux jouer à trouver.
-			
 		}
 	}
 }

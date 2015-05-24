@@ -9,8 +9,8 @@ import java.net.Socket;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import bataille_navale.ui.MaFrame;
-import bataille_navale.ui.PanelGame;
+//import bataille_navale.ui.MaFrame;
+//import bataille_navale.ui.PanelGame;
 
 public class ClientGame 
 {
@@ -22,10 +22,11 @@ public class ClientGame
 		try
 		{
 			System.out.println("Party rejoint sur le port : ");
+			@SuppressWarnings("resource")
 			Socket socket = new Socket("localhost", 1235);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			System.out.println("Préparation de la frame");
+			
 		}
 		catch(Exception e)
 		{
@@ -40,9 +41,12 @@ public class ClientGame
 			demande.put("commande", "add");
 			demande.put("param", Port);
 			out.println(demande);
-			if(in.readLine().equals("ajoute"))
+			if(in.readLine().equals("ajoute")){
+				System.out.println("Ajout accepter par le TG");
 				return "ok";
+			}
 			else return "rate";
+			
 		}
 		catch(Exception e)
 		{

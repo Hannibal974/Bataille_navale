@@ -4,8 +4,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import random.core.Match;
-
 public class ServeurGame 
 {
 	ArrayList<Integer> portToUse = new ArrayList<Integer>();
@@ -15,6 +13,7 @@ public class ServeurGame
 	{
 		try
 		{
+			@SuppressWarnings("resource")
 			ServerSocket ss=new ServerSocket(1235);
 			System.out.println("Serveur game en ecoute...");
 			while(true)
