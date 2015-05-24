@@ -20,7 +20,6 @@ public class PanelGame extends JPanel implements ActionListener
     private javax.swing.JLabel l_historique;
     private javax.swing.JTextField tf_nombre;
 	private ClientGame client;
-	private int nomberToFound;
     // End of variables declaration//GEN-END:variables
 	
 	public PanelGame(ClientGame cli) 
@@ -95,25 +94,30 @@ public class PanelGame extends JPanel implements ActionListener
 		// TODO Auto-generated method stub
 		if(e.getSource() == b_send)
 		{
-			if (tf_nombre.getText() != "") {
-				//TODO Récupère le nombre dans Matches
-						//nomberToFound = match.getNumbertofound();
-				//TODO Récupère le nombre envoyer par le client
-				int n = Integer.parseInt(tf_nombre.getText());
-				//TODO je vérifie s'il est plus grand plus petit ou égale
-				jta_historique.append("Vous avez envoyé:" + n + ".\n");
-				if (n> nomberToFound){
-					jta_historique.append("Plus petit.\n");
-				}
-				else if (n< nomberToFound){
-					jta_historique.append("Plus grand.\n");
-				}
-				else if (n== nomberToFound){
-					//TODO affiche le résultat au joueur.
-					jta_historique.append("Jeu terminé.\n");
+			if(client.GetNumberPlayers() == 2)
+			{
+				if (tf_nombre.getText() != "") 
+				{
+					//TODO Récupère le nombre dans Matches
+							//nomberToFound = match.getNumbertofound();
+					//TODO Récupère le nombre envoyer par le client
+					client.setNumberTries(client.getNumberTries()+1);
+					int n = Integer.parseInt(tf_nombre.getText());
+					//TODO je vérifie s'il est plus grand plus petit ou égale
+					jta_historique.append("Vous avez envoyé:" + n + ".\n");
+					if (n> client.getNumberToFound()){
+						jta_historique.append("Plus petit.\n");
+					}
+					else if (n< client.getNumberToFound()){
+						jta_historique.append("Plus grand.\n");
+					}
+					else if (n== client.getNumberToFound()){
+						//TODO affiche le résultat au joueur.
+						jta_historique.append("Jeu terminé.\n");
+					}
 				}
 			}
-			//TODO Affiche la fin du jeu si l'un des deux jouer à trouver.
+			else jta_historique.append("Veuillez attendre qu'un adversaire se connecte");
 		}
 	}
 }

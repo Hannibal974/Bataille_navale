@@ -10,13 +10,14 @@ import org.json.JSONObject;
 public class ThreadServeurGame implements Runnable
 {
 	private Socket socket;
-	@SuppressWarnings("unused")
 	private ServeurGame srv;
+	private int numberToFound;
 	
-	public ThreadServeurGame (Socket ss, ServeurGame serv)
+	public ThreadServeurGame (Socket ss, ServeurGame serv, int num)
 	{
 		socket = ss;
 		srv = serv;
+		numberToFound = num;
 	}
 
 	@Override
@@ -30,11 +31,14 @@ public class ThreadServeurGame implements Runnable
 			while(true)
 			{
 				JSONObject demande=new JSONObject(in.readLine());
-				
-				if(demande.get("commande").equals("add"))
+			
+				if(demande.get("commande").equals("how many"))
 				{
-					System.out.println("Réponse à la demande add");
-					out.println("ajoute");
+					out.println(srv.getNumberPlayer());
+				}
+				else if (demande.get("commande").equals("getnumbertofound"))
+				{
+					out.println(numberToFound);
 				}
 			}
 		}
@@ -42,6 +46,5 @@ public class ThreadServeurGame implements Runnable
 		{
 			System.err.println("Thread Game : " + e.getMessage());
 		}
-		// TODO Auto-generated method stub
 	}
 }

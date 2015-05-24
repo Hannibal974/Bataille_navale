@@ -19,7 +19,6 @@ public class MaFrameGame extends JFrame
 		panelgame.setVisible(true);
 		System.out.println("coucou la frame game");
 		add(panelgame);
-		getContentPane().setVisible(true);
 		System.out.println("Affiche frame Game");
 		setVisible(true);
 	}

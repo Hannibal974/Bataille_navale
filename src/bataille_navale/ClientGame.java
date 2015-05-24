@@ -16,11 +16,13 @@ public class ClientGame
 {
 	private PrintWriter out;
 	private BufferedReader in;
+	private int numberTries;
 
 	public ClientGame () 
 	{
 		try
 		{
+			numberTries = 0;
 			System.out.println("Party rejoint sur le port : ");
 			@SuppressWarnings("resource")
 			Socket socket = new Socket("localhost", 1235);
@@ -55,6 +57,38 @@ public class ClientGame
 		return "other";
 	}
 	
+	public int GetNumberPlayers ()
+	{
+		try
+		{
+			JSONObject demande = new JSONObject();
+			demande.put("commande", "how many");
+			out.println(demande);
+			return Integer.parseInt(in.readLine());
+		}
+		catch(Exception e)
+		{
+			System.err.println("GetNumberPlayers : " + e.getMessage());
+		}
+		return 0;
+	}
+	
+	public int getNumberToFound ()
+	{
+		try
+		{
+			JSONObject demande = new JSONObject();
+			demande.put("commande", "getnumbertofound");
+			out.println(demande);
+			return Integer.parseInt(in.readLine());
+		}
+		catch(Exception e)
+		{
+			System.err.println("GetNumberToFound : " + e.getMessage());
+		}
+		return 0;
+	}
+	
 	public static void main(String[] args) throws JSONException, IOException 
 	{
 		ClientGame client = new ClientGame();
@@ -69,4 +103,24 @@ public class ClientGame
 		System.out.println("visibilite");
 		System.out.println("Game is started");
 	}
+	public PrintWriter getOut() {
+		return out;
+	}
+	public void setOut(PrintWriter out) {
+		this.out = out;
+	}
+	public BufferedReader getIn() {
+		return in;
+	}
+	public void setIn(BufferedReader in) {
+		this.in = in;
+	}
+	public int getNumberTries() {
+		return numberTries;
+	}
+	public void setNumberTries(int numberTries) {
+		this.numberTries = numberTries;
+	}
+	
+	
 }

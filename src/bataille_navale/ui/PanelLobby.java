@@ -166,7 +166,8 @@ public class PanelLobby extends JPanel implements ActionListener
 		}
 	}
 	
-	public void lancheGame(){
+	public void lancheGame()
+	{
 		//if p1 :
 		//DialogueBox dialogue = new DialogueBox("Lancement du jeu","Attente d'un joueur","Retour Lobby");
 		//Connexion au serveurGame
