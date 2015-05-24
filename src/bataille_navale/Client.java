@@ -63,12 +63,6 @@ public class Client
 			demande.put("commande", "create");
 			demande.put("username", play.getUsername());
 			out.println(demande);
-			JSONArray reponse = new JSONArray(in.readLine());
-			if(reponse.get(0).equals("match cree"))
-			{
-				new ServeurGame(reponse.getInt(1));
-				new ClientGame(reponse.getInt(1));
-			}
 		}
 		catch(Exception e)
 		{

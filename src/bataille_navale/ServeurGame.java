@@ -11,11 +11,11 @@ public class ServeurGame
 	ArrayList<Integer> portToUse = new ArrayList<Integer>();
 	private int numberToFound;
 	
-	public ServeurGame (int port)
+	public ServeurGame ()
 	{
 		try
 		{
-			ServerSocket ss=new ServerSocket(port);
+			ServerSocket ss=new ServerSocket(1235);
 			System.out.println("Serveur game en ecoute...");
 			while(true)
 			{
@@ -26,7 +26,7 @@ public class ServeurGame
 		}
 		catch(Exception e)
 		{
-			System.err.println("Serveur game : " + e.getStackTrace());
+			System.err.println("Serveur game : " + e.getMessage());
 		}
 	}
 
@@ -44,5 +44,9 @@ public class ServeurGame
 
 	public void setNumberToFound(int numberToFound) {
 		this.numberToFound = numberToFound;
+	}
+	
+	public static void main(String[] args) {
+		new ServeurGame();
 	}
 }

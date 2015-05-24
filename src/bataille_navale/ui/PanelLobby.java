@@ -167,16 +167,14 @@ public class PanelLobby extends JPanel implements ActionListener
 		//Connexion au serveurGame
 		//Changement de panel ici.
 		//if p1 and p2:
-		frame.getContentPane().setVisible(false);
-		frame.getContentPane().remove(this);
+		//frame.getContentPane().setVisible(false);
+		//frame.getContentPane().remove(this);
 		//Afficher l'attente d'un second joueur
 		//dialogue.setVisible(true);
 		//Affiche le panel du joueur
-		int port = (1);
-		System.out.println("print port use : " + port);
-		ServeurGame ServG = new ServeurGame(port);
+		//ServeurGame ServG = new ServeurGame();
 		System.out.println("Création du client");
-		ClientGame cliG = new ClientGame(port);
-		cliG.AddPlayerToServeur(port);
+		ClientGame cliG = new ClientGame();
+		cliG.AddPlayerToServeur(1235);
 	}
 }

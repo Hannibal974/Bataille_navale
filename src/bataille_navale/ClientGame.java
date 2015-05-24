@@ -16,14 +16,13 @@ public class ClientGame
 {
 	private PrintWriter out;
 	private BufferedReader in;
-	private MaFrameGame frame;
 
-	public ClientGame (int port) 
+	public ClientGame () 
 	{
 		try
 		{
-			System.out.println("Party rejoint sur le port : " + port);
-			Socket socket = new Socket("localhost", port);
+			System.out.println("Party rejoint sur le port : ");
+			Socket socket = new Socket("localhost", 1235);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			System.out.println("Préparation de la frame");
@@ -32,12 +31,6 @@ public class ClientGame
 		{
 			System.err.println("Client : " + e.getMessage());
 		}
-		
-		frame = new MaFrameGame();
-		System.out.println("Game is started");
-		//Lancement du panel
-		frame.getContentPane().add(new PanelGame(this));
-		frame.getContentPane().setVisible(true);
 	}
 	public String AddPlayerToServeur (int Port)
 	{
@@ -56,5 +49,13 @@ public class ClientGame
 			System.out.println("error adding Player" + e.getMessage());
 		}
 		return "other";
+	}
+	
+	public static void main(String[] args) throws JSONException, IOException 
+	{
+		ClientGame client = new ClientGame();
+		MaFrameGame frame = new MaFrameGame(client);
+		frame.setVisible(true);
+		System.out.println("Game is started");
 	}
 }
