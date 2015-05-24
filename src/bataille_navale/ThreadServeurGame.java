@@ -32,7 +32,11 @@ public class ThreadServeurGame implements Runnable
 			{
 				JSONObject demande=new JSONObject(in.readLine());
 			
-				if(demande.get("commande").equals("how many"))
+				if(demande.get("commande").equals("add"))
+				{
+					srv.setNumberPlayer(srv.getNumberPlayer() + 1);
+				}
+				else if(demande.get("commande").equals("how many"))
 				{
 					out.println(srv.getNumberPlayer());
 				}

@@ -28,7 +28,6 @@ public class ClientGame
 			Socket socket = new Socket("localhost", 1235);
 			out = new PrintWriter(socket.getOutputStream(), true);
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			
 		}
 		catch(Exception e)
 		{
@@ -41,7 +40,6 @@ public class ClientGame
 		{
 			JSONObject demande = new JSONObject();
 			demande.put("commande", "add");
-			demande.put("param", Port);
 			out.println(demande);
 			if(in.readLine().equals("ajoute")){
 				System.out.println("Ajout accepter par le TG");

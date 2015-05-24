@@ -69,24 +69,19 @@ public class Client
 		}
 	}
 	
-	public String JoinMatch (int index, Player play)
+	public void JoinServeur (Player play)
 	{
 		try
 		{
 			JSONObject demande = new JSONObject();
 			demande.put("commande", "join");
-			demande.put("index", index);
 			demande.put("username", play.getUsername());
 			out.println(demande);
-			if(in.readLine().equals("joinDone"))
-				return "JoinMatch";
-			else return "JoinFailed";
 		}
 		catch(Exception e)
 		{
 			
 		}
-		return "other";
 	}
 	
 	public Integer[] GetPortFromServer () throws NullPointerException

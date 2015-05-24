@@ -27,7 +27,7 @@ import bataille_navale.ClientGame;
 public class PanelLobby extends JPanel implements ActionListener
 {
 	 // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton b_connect;
+    private javax.swing.JButton b_join;
     private javax.swing.JButton b_create;
     private javax.swing.JButton b_deconnect;
 	private javax.swing.JComboBox<String> PlayersIn;
@@ -64,8 +64,8 @@ public class PanelLobby extends JPanel implements ActionListener
 
 	        l_JoinServ = new javax.swing.JLabel();
 	        l_EnterName = new javax.swing.JLabel();
-	        b_connect = new javax.swing.JButton();
-	        b_connect.addActionListener(this);
+	        b_join = new javax.swing.JButton();
+	        b_join.addActionListener(this);
 	        PlayersIn = new JComboBox<String>();
 	        b_create = new javax.swing.JButton();
 	        b_create.addActionListener(this);
@@ -78,7 +78,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	        l_EnterName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 	        l_EnterName.setText("Selectionner votre adversaire");
 
-	        b_connect.setText("Rejoindre");
+	        b_join.setText("Rejoindre");
 
 	        PlayersIn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -107,7 +107,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	                                .addContainerGap()
 	                                .addComponent( PlayersIn, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
 	                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-	                                .addComponent(b_connect, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                                .addComponent(b_join, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                            .addGroup(layout.createSequentialGroup()
 	                                .addContainerGap()
 	                                .addComponent(l_createParty1)))
@@ -129,7 +129,7 @@ public class PanelLobby extends JPanel implements ActionListener
 	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
 	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
 	                    .addComponent( PlayersIn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(b_connect, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+	                    .addComponent(b_join, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
 	                .addGap(33, 33, 33)
 	                .addComponent(l_createParty1)
 	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -152,14 +152,9 @@ public class PanelLobby extends JPanel implements ActionListener
 			// Attente que match reçoit sont 2nd joueur pour lancer GamePanel.
 			lancheGame();
 		}
-		else if (e.getSource() == b_connect)
+		else if (e.getSource() == b_join)
 		{
-			if (PlayersIn.getSelectedItem() != null ||  PlayersIn.getSelectedItem() != "" ){
-				System.out.println("player asked to join a game");
-				String validation = client.JoinMatch(PlayersIn.getSelectedIndex(), p);
-				System.out.println(validation);
 				lancheGame();	
-			}
 		}
 		
 		if(e.getSource() == b_deconnect)
