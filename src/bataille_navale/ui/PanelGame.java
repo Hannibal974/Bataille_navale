@@ -2,12 +2,11 @@ package bataille_navale.ui;
 /**
  * @author Jennifer & Romain
  */
-import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import bataille_navale.ClientGame;
-import random.core.Match;
 
 @SuppressWarnings("serial")
 public class PanelGame extends JPanel implements ActionListener
@@ -19,25 +18,20 @@ public class PanelGame extends JPanel implements ActionListener
     private javax.swing.JTextArea jta_historique;
     private javax.swing.JLabel l_Trouverlenombre;
     private javax.swing.JLabel l_historique;
-    private javax.swing.JButton b_retourLobby;
     private javax.swing.JTextField tf_nombre;
-	@SuppressWarnings("unused")
 	private ClientGame client;
-	private Match match;
 	private int nomberToFound;
     // End of variables declaration//GEN-END:variables
 	
 	public PanelGame(ClientGame cli) 
 	{
 		client = cli;
-		setLayout(new GridLayout(1,3));
-		
+		System.out.println("clientFrame"+client);
 		initComponents();
 	}
 	
 	private void initComponents() {
         jToggleButton1 = new javax.swing.JToggleButton();
-        b_retourLobby.setText("Retour Lobby");
         l_Trouverlenombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_historique = new javax.swing.JTextArea();
@@ -103,7 +97,7 @@ public class PanelGame extends JPanel implements ActionListener
 		{
 			if (tf_nombre.getText() != "") {
 				//TODO Récupère le nombre dans Matches
-				nomberToFound = match.getNumbertofound();
+						//nomberToFound = match.getNumbertofound();
 				//TODO Récupère le nombre envoyer par le client
 				int n = Integer.parseInt(tf_nombre.getText());
 				//TODO je vérifie s'il est plus grand plus petit ou égale
