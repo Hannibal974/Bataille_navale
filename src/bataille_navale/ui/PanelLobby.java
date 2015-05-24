@@ -14,7 +14,9 @@ import javax.swing.JPanel;
 
 
 
+
 import org.json.JSONException;
+
 
 //import random.core.Match;
 import bataille_navale.Client;
@@ -166,6 +168,7 @@ public class PanelLobby extends JPanel implements ActionListener
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void lancheGame()
 	{
 		//if p1 :

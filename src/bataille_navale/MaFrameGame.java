@@ -11,13 +11,13 @@ public class MaFrameGame extends JFrame
 	
 	public MaFrameGame (ClientGame cli)
 	{
-		setTitle("serveur de game");
+		setTitle("Trouver le nom");
 		setSize(900, 600);
 		client = cli;
 		//Lancement du panel
 		panelgame = new PanelGame(client);
 		panelgame.setVisible(true);
-		System.out.println("coucou la frame game");
+		System.out.println("Ajout de la frame game");
 		add(panelgame);
 		System.out.println("Affiche frame Game");
 		setVisible(true);
