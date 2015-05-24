@@ -5,12 +5,16 @@ package bataille_navale.ui;
 */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 
 
+
+
+import org.json.JSONException;
 
 //import random.core.Match;
 import bataille_navale.Client;
@@ -176,6 +180,15 @@ public class PanelLobby extends JPanel implements ActionListener
 		//ServeurGame ServG = new ServeurGame();
 		System.out.println("Création du client");
 		ClientGame cliG = new ClientGame();
+		try {
+			cliG.main(null);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		cliG.AddPlayerToServeur(1235);
 	}
 }
