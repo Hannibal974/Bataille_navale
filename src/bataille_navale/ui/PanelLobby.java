@@ -15,7 +15,9 @@ import javax.swing.JPanel;
 
 
 
+
 import org.json.JSONException;
+
 
 
 //import random.core.Match;
@@ -23,6 +25,7 @@ import bataille_navale.Client;
 import bataille_navale.Player;
 import bataille_navale.ClientGame;
 //import bataille_navale.ui.DialogueBox;
+import bataille_navale.ServeurGame;
 
 public class PanelLobby extends JPanel implements ActionListener
 {
@@ -179,6 +182,8 @@ public class PanelLobby extends JPanel implements ActionListener
 		//ServeurGame ServG = new ServeurGame();
 		System.out.println("Création du clientGame");
 		ClientGame cliG = new ClientGame();
+		ServeurGame servG = new ServeurGame();
+		servG.main(null);
 		try {System.out.println("cligMain launch");
 			cliG.main(null);
 		} catch (JSONException e) {
