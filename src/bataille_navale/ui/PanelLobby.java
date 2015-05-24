@@ -11,10 +11,12 @@ import javax.swing.JPanel;
 
 
 
-
-import random.core.Match;
+//import random.core.Match;
 import bataille_navale.Client;
 import bataille_navale.Player;
+import bataille_navale.ServeurGame;
+import bataille_navale.ClientGame;
+import bataille_navale.ui.DialogueBox;
 
 public class PanelLobby extends JPanel implements ActionListener
 {
@@ -160,11 +162,21 @@ public class PanelLobby extends JPanel implements ActionListener
 	}
 	
 	public void lancheGame(){
-		System.out.println("Game is started");
-		//Affiche le panel du joueur
+		//if p1 :
+		//DialogueBox dialogue = new DialogueBox("Lancement du jeu","Attente d'un joueur","Retour Lobby");
+		//Connexion au serveurGame
+		//Changement de panel ici.
+		//if p1 and p2:
 		frame.getContentPane().setVisible(false);
 		frame.getContentPane().remove(this);
-		//Lancement du panel
-		
+		//Afficher l'attente d'un second joueur
+		//dialogue.setVisible(true);
+		//Affiche le panel du joueur
+		int port = (1);
+		System.out.println("print port use : " + port);
+		ServeurGame ServG = new ServeurGame(port);
+		System.out.println("Création du client");
+		ClientGame cliG = new ClientGame(port);
+		cliG.AddPlayerToServeur(port);
 	}
 }

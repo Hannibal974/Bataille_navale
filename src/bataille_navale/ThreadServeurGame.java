@@ -28,7 +28,14 @@ public class ThreadServeurGame implements Runnable
 			// boucle infinie
 			while(true)
 			{
+				System.out.println("TG: Attente de la demande");
 				JSONObject demande=new JSONObject(in.readLine());
+				
+				if(demande.get("commande").equals("add"))
+				{
+					out.println("ajoute");
+				}
+				
 			}
 		}
 		catch(Exception e)
@@ -36,6 +43,5 @@ public class ThreadServeurGame implements Runnable
 			System.err.println("Thread Game : " + e.getStackTrace());
 		}
 		// TODO Auto-generated method stub
-		
 	}
 }

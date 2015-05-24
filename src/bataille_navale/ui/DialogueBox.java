@@ -23,12 +23,19 @@ public class DialogueBox extends JDialog {
 	
 	public DialogueBox(String Titre, String Texte, String Bouton){
 	
-	    ld_resultgame.setText(Titre);
-	    ld_Texteafficher.setText(Texte);
-	    b_retourLobby.setText(Bouton);
+		if (Titre != "" && Texte != "" && Bouton !=""){
+		    ld_resultgame.setText(Titre);
+		    ld_Texteafficher.setText(Texte);
+		    b_retourLobby.setText(Bouton);	
+		}
+
+	    else{
+		    ld_resultgame.setText("Attente du jeu");
+		    ld_Texteafficher.setText("");
+		    b_retourLobby.setText("Retour au Lobby");	
+	    }
 	    DialogueBoxInit();
-	    
-	    jd_gameEnd.setVisible(true);
+	    //jd_gameEnd.setVisible(true);
 	}
 	
 	public void DialogueBoxInit() {

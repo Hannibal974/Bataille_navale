@@ -8,6 +8,7 @@ import random.core.Match;
 
 public class ServeurGame 
 {
+	ArrayList<Integer> portToUse = new ArrayList<Integer>();
 	private int numberToFound;
 	
 	public ServeurGame (int port)
@@ -27,5 +28,21 @@ public class ServeurGame
 		{
 			System.err.println("Serveur game : " + e.getStackTrace());
 		}
+	}
+
+	public ArrayList<Integer> getPortToUse() {
+		return portToUse;
+	}
+
+	public void setPortToUse(ArrayList<Integer> portToUse) {
+		this.portToUse = portToUse;
+	}
+
+	public int getNumberToFound() {
+		return numberToFound;
+	}
+
+	public void setNumberToFound(int numberToFound) {
+		this.numberToFound = numberToFound;
 	}
 }
