@@ -54,8 +54,15 @@ public class ClientGame
 	public static void main(String[] args) throws JSONException, IOException 
 	{
 		ClientGame client = new ClientGame();
+		if(client instanceof ClientGame)
+			System.out.println("client cree");
+		else System.out.println("failed");
+		System.out.println("début création MaFrameGame");
+		System.out.println(client);
 		MaFrameGame frame = new MaFrameGame(client);
+		System.out.println("fin create MaFrameGame");
 		frame.setVisible(true);
+		System.out.println("visibilite");
 		System.out.println("Game is started");
 	}
 }

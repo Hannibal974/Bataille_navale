@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import bataille_navale.Client;
@@ -27,17 +29,14 @@ public class PanelGame extends JPanel implements ActionListener
     private javax.swing.JLabel ld_Texteafficher;
     private javax.swing.JButton b_retourLobby;
     private javax.swing.JTextField tf_nombre;
-	@SuppressWarnings("unused")
 	private ClientGame client;
-	private Match match;
 	private int nomberToFound;
     // End of variables declaration//GEN-END:variables
 	
 	public PanelGame(ClientGame cli) 
 	{
 		client = cli;
-		setLayout(new GridLayout(1,3));
-		
+		System.out.println("clientFrame"+client);
 		initComponents();
 	}
 	
@@ -45,8 +44,8 @@ public class PanelGame extends JPanel implements ActionListener
         jToggleButton1 = new javax.swing.JToggleButton();
         jd_gameEnd = new javax.swing.JDialog();
         ld_resultgame = new javax.swing.JLabel();
-        ld_Texteafficher.setText("Texte à afficher");
-        b_retourLobby.setText("Retour Lobby");
+        ld_Texteafficher = new JLabel("Texte à afficher");
+        b_retourLobby = new JButton("Retour Lobby");
         l_Trouverlenombre = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jta_historique = new javax.swing.JTextArea();
@@ -155,7 +154,7 @@ public class PanelGame extends JPanel implements ActionListener
 		{
 			if (tf_nombre.getText() != "") {
 				//TODO Récupère le nombre dans Matches
-				nomberToFound = match.getNumbertofound();
+						//nomberToFound = match.getNumbertofound();
 				//TODO Récupère le nombre envoyer par le client
 				int n = Integer.parseInt(tf_nombre.getText());
 				//TODO je vérifie s'il est plus grand plus petit ou égale
