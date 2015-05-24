@@ -182,9 +182,9 @@ public class PanelLobby extends JPanel implements ActionListener
 		//dialogue.setVisible(true);
 		//Affiche le panel du joueur
 		//ServeurGame ServG = new ServeurGame();
-		System.out.println("Création du client");
+		System.out.println("Création du clientGame");
 		ClientGame cliG = new ClientGame();
-		try {
+		try {System.out.println("cligMain launch");
 			cliG.main(null);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

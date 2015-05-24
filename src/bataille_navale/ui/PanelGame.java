@@ -102,18 +102,25 @@ public class PanelGame extends JPanel implements ActionListener
 							//nomberToFound = match.getNumbertofound();
 					//TODO Récupère le nombre envoyer par le client
 					client.setNumberTries(client.getNumberTries()+1);
-					int n = Integer.parseInt(tf_nombre.getText());
-					//TODO je vérifie s'il est plus grand plus petit ou égale
-					jta_historique.append("Vous avez envoyé:" + n + ".\n");
-					if (n> client.getNumberToFound()){
-						jta_historique.append("Plus petit.\n");
+					try
+					{
+						int n = Integer.parseInt(tf_nombre.getText());
+						//TODO je vérifie s'il est plus grand plus petit ou égale
+						jta_historique.append("Vous avez envoyé:" + n + ".\n");
+						if (n> client.getNumberToFound()){
+							jta_historique.append("Plus petit.\n");
+						}
+						else if (n< client.getNumberToFound()){
+							jta_historique.append("Plus grand.\n");
+						}
+						else if (n== client.getNumberToFound()){
+							//TODO affiche le résultat au joueur.
+							jta_historique.append("Jeu terminé.\n");
+						}
 					}
-					else if (n< client.getNumberToFound()){
-						jta_historique.append("Plus grand.\n");
-					}
-					else if (n== client.getNumberToFound()){
-						//TODO affiche le résultat au joueur.
-						jta_historique.append("Jeu terminé.\n");
+					catch(Exception ex)
+					{
+						jta_historique.append("Veuillez saisir un nombre !!");
 					}
 				}
 			}
