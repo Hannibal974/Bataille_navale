@@ -2,8 +2,8 @@ package random.core;
 
 import java.util.Random;
 
-import bataille_navale.Player;
-import bataille_navale.ThreadServeur;
+import trouver_le_nombre.Player;
+import trouver_le_nombre.ThreadServeur;
 
 public class Match 
 {
